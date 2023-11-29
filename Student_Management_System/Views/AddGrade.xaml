@@ -1,0 +1,75 @@
+﻿<Window x:Class="Student_Management_System.Views.AddGrade"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Student_Management_System.ViewModels"
+        mc:Ignorable="d"
+        Title="AddGrade" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        FontSize="18">
+    <Window.DataContext>
+        <local:AddGradeViewModel/>
+    </Window.DataContext>
+
+    <Border Background="#3A4750">
+        <Grid Height="500" VerticalAlignment="Top">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="50" />
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="Add Results" FontSize="16" Foreground="Gold" Margin="25,25,100,-167" 
+                  BorderBrush="Gold" BorderThickness="0.6" Grid.ColumnSpan="4" Grid.RowSpan="7" />
+
+            <TextBlock Text="Student Name      :" FontSize="16" Foreground="#ECEDF1" Grid.Row="1" Grid.Column="1"/>
+            <TextBlock FontSize="16" Grid.Row="1" Grid.Column="2" Text="{Binding SelectedStudent2.FirstName,UpdateSourceTrigger=PropertyChanged}"  Background="#E5E7F5" Margin="0,0,0,10"/>
+            <TextBlock Text="Student Reg. No   :" FontSize="16" Foreground="#ECEDF1" Grid.Row="2" Grid.Column="1"/>
+            <TextBlock FontSize="16" Grid.Row="2" Grid.Column="2" Text="{Binding SelectedStudent2.RegNo,UpdateSourceTrigger=PropertyChanged}" Background="#E5E7F5" Margin="0,0,0,10"/>
+            <TextBlock Text="Select Modules    :" FontSize="16"  Foreground="#ECEDF1" Grid.Row="3" Grid.Column="1"/>
+            <TextBlock Text="Marks                  :" FontSize="16"  Foreground="#ECEDF1" Grid.Row="4" Grid.Column="1"/>
+            <TextBox  Text="{Binding Marks}" FontSize="16" Grid.Row="4" Grid.Column="2" Background="#E5E7F5" Margin="0,5,0,0" />
+            <TextBlock Text="Calculate GPA     :" FontSize="16"  Foreground="#ECEDF1" Grid.Row="6" Grid.Column="1" Margin="0,69,0,-62"/>
+
+            <ComboBox FontSize="16" Grid.Row="3" Grid.Column="2" ItemsSource="{Binding ListRModule,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedModule1}">
+                <ComboBox.ItemTemplate>
+
+                    <DataTemplate>
+                        <StackPanel Background="#9CA2D4" Orientation="Horizontal" HorizontalAlignment="Left" >
+                            <TextBlock Width="75" Margin="5" Text="{Binding Code}"/>
+                            <TextBlock Width="300" Margin="5" Text="{Binding Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <StackPanel Orientation="Vertical"  Grid.Row="6" Grid.Column="2" Margin="0,0,0,-175">
+                <Button Content="Add Marks" Command="{Binding GetGradeCommand}" Background="#C8B214" Width="100" Height="35" Margin="-25,0,30,30" />
+                <Button Content="GPA" Command="{Binding CalGPACommand}" Background="#C8B214" Width="100" Height="35" Margin="-25,0,30,30" />
+                <Button Content="Close" FontSize="16" Background="#C8B214" FontWeight="Bold" Command="{Binding Close4Command}" Width="100" Height="35" Margin="0,25,58,0" Grid.Column="2" Grid.Row="6"/>
+
+            </StackPanel>
+
+            
+        </Grid>
+    </Border>
+
+</Window>
+

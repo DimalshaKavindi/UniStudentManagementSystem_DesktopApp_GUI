@@ -1,0 +1,20 @@
+﻿Student_Management_System
+1.0.0.0
+
+winexe
+C#
+.cs
+E:\Sem 3\project GUI\GUI Project finals\Student_Management_System\Student_Management_System\obj\Debug\net6.0-windows\
+Student_Management_System
+none
+false
+TRACE;DEBUG;NET;NET6_0;NETCOREAPP
+E:\Sem 3\project GUI\GUI Project finals\Student_Management_System\Student_Management_System\App.xaml
+8440677365
+
+41970194511
+218956424957
+PasswordBox\PasswordBox.xaml;Views\AddGrade.xaml;Views\AddModule.xaml;Views\AddStudent.xaml;Views\AdminWindow.xaml;Views\LoginWindow.xaml;Views\ResultsWindow.xaml;Views\StudentWindow.xaml;
+
+False
+

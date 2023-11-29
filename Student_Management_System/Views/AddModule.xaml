@@ -1,0 +1,82 @@
+﻿<Window x:Class="Student_Management_System.Views.AddModule"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Student_Management_System.ViewModels"
+        mc:Ignorable="d"
+        Title="AddModule" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        FontSize="18">
+    <Window.DataContext>
+        <local:AddModuleViewModel/>
+    </Window.DataContext>
+
+    <Border Background="#3A4750">
+        <Grid Height="500" VerticalAlignment="Top">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="230" />
+                <RowDefinition Height="50" />
+
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="Module Registration" FontSize="16" Foreground="Gold" Margin="25,10,100,-15" 
+                  BorderBrush="Gold" BorderThickness="0.6" Grid.ColumnSpan="4" Grid.RowSpan="7" />
+
+            <TextBlock Text="Student Name      :" FontSize="16" Foreground="#ECEDF1" Grid.Row="1" Grid.Column="1"/>
+            <TextBlock FontSize="16" Grid.Row="1" Grid.Column="2" Text="{Binding SelectedStudent1.FirstName,UpdateSourceTrigger=PropertyChanged}"  Background="#E5E7F5" Margin="0,0,0,10"/>
+            <TextBlock Text="Student Reg. No   :" FontSize="16" Foreground="#ECEDF1" Grid.Row="2" Grid.Column="1"/>
+            <TextBlock FontSize="16" Grid.Row="2" Grid.Column="2" Text="{Binding SelectedStudent1.RegNo,UpdateSourceTrigger=PropertyChanged}" Background="#E5E7F5" Margin="0,0,0,10"/>
+            <TextBlock Text="Select Modules    :" FontSize="16"  Foreground="#ECEDF1" Grid.Row="3" Grid.Column="1"/>
+
+            <ComboBox FontSize="16" Grid.Row="3" Grid.Column="2" ItemsSource="{Binding ListAllModule}" SelectedItem="{Binding SelectedModule}">
+                <ComboBox.ItemTemplate>
+
+                    <DataTemplate>
+                        <StackPanel Background="#9CA2D4" Orientation="Horizontal" HorizontalAlignment="Left" >
+                            <TextBlock Width="75" Margin="5" Text="{Binding Code}"/>
+                            <TextBlock Width="300" Margin="5" Text="{Binding Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <StackPanel Orientation="Vertical"  Grid.Row="5" Grid.Column="1" Margin="0,30,10,-87" Grid.RowSpan="2">
+                <Button Background="#C8B214" FontWeight="Bold" Width="100" Height="40" Content="REGISTER" Margin="25,30,25,29.2"  Command="{Binding RegisterCommand}" />
+                <Button Background="#C8B214" FontWeight="Bold" Width="100" Height="40" Content="REMOVE"  Command="{Binding RemoveCommand}"/>
+            </StackPanel>
+
+            <ListBox FontSize="16" Grid.Row="5" Grid.Column="2" Width="400" ItemsSource="{Binding ListRegModules,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedModule1}" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel  Background="#9CA2D4" Orientation="Horizontal" HorizontalAlignment="Left" Width="400" >
+                            <TextBlock Width="50" Margin="5" Text="{Binding Code}"/>
+                            <TextBlock Width="250" Margin="5" Text="{Binding Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Button Content="Close" FontSize="16" FontWeight="Bold" Background="#C8B214" Command="{Binding Close3Command}" Margin="80,18,200,0" Grid.Column="2" Grid.Row="6"/>
+
+        </Grid>
+    </Border>
+
+</Window>
